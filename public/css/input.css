@@ -1,0 +1,35 @@
+.form-group{
+   position: relative;
+}
+.form-control:focus{
+   box-shadow: none;
+}
+
+.form-control{
+    border:none;
+    font-size:16px;
+    border-bottom: 1px solid lightblue;
+    background-color:transparent;
+    height: 35px;  
+    position: relative;
+
+}
+
+label{
+  position:absolute;
+  top:10px;
+  font-weight: normal; 
+  transition: all 0.3s;
+}
+.form-control:focus ~label{
+top:-10px;
+color:lightcoral;
+background:transparent;
+padding: 0 5px;
+}
+label.active{
+   top:10px;
+   color:lightcoral;
+   background:transparent;
+   padding: 0 5px;
+   }
