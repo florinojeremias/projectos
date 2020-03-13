@@ -34,7 +34,8 @@ Route::resource('/aluno/alunolistagem','AlunosController');
 Route::resource('/aluno/alunoedit', 'AlunosController');
 
 //Route::get('turma/turmacadastro/','area@index');
-
+Route::resource('/admin/usuarios', 'AdminUserController');
+Route::resource('/admin/usuariocadastro', 'AdminUserController');
 Route::get('/turma/index','Vistas\ViewController@turmaIndex');
 Route::get('/professor/index','Vistas\ViewController@professorIndex');
 Route::get('/home','HomeController@index')->name('home');

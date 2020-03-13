@@ -22,10 +22,12 @@ class AlunosController extends Controller
     public function index(Aluno  $aluno)
     {
                 $alunos=Aluno::all();
-                $turmas=Aluno::select('id')->get();
-                $turmasa=Turmas::find($turmas);
-
-
+              //  $turmas=Aluno::select('id')->get();
+                //$turmasa=Turmas::find($turmas);
+                $alunos->each(function($aluno){
+                    $turma=Turmas::find($aluno->turma_id);
+                    $aluno->turma=$turma->nome_turma;
+                });
                 return view('Aluno.listaalunos',compact('alunos'));
     }
 

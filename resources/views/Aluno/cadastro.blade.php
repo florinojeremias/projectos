@@ -170,7 +170,7 @@ Cadastro de Alunos
                                     <label for="ano">{{__('Ano de Conversao')}}</label>
                                 </div>
                                 <div class="col-md-4 col-sm-8 col-lg-4 p-4">
-                                    <input type="text" name="igreja_proviniencia" class="form-control">
+                                    <input type="text" name="igreja_proviniencia" class="form-control" autocomplete="off">
                                     <label for="ano">{{__('Igreja de Proveniencia')}}</label>
                                 </div>
                                 <div class="col-md-4 col-sm-8 col-lg-4 p-4">
@@ -187,12 +187,12 @@ Cadastro de Alunos
 
                                 </div>
                                 <div class="col-md-4 col-sm-8 col-lg-4 p-4">
-                                    <input type="text" name="ultima_turma" class="form-control">
+                                    <input type="text" name="ultima_turma" class="form-control" autocomplete="off">
                                     <label for="ano">Ultima Turma</label>
 
                                 </div>
                                 <div class="col-md-4 col-sm-8 col-lg-4 p-4">
-                                    <input type="text" name="professor" class="form-control">
+                                    <input type="text" name="professor" class="form-control" autocomplete="off">
                                     <label for="ano">Professor</label>
 
                                 </div>
@@ -215,17 +215,17 @@ Cadastro de Alunos
 
                                    </div>
                                    <div class="col-md-4 col-sm-8 col-lg-4 p-4">
-                                    <input class="form-control" type="text" name="congregacao_mea">
+                                    <input class="form-control" type="text" name="congregacao_mea" autocomplete="off">
                                       <label for="text">Congregacao MEA que Pertence</label>
 
                                    </div>
                                    <div class="col-md-4 col-sm-8 col-lg-4 p-4 ">
-                                    <input class="form-control" type="text" name="lider_pg">
+                                    <input class="form-control" type="text" name="lider_pg" autocomplete="off">
                                       <label for="date">Lider da Pg</label>
 
                                    </div>
                                    <div class="col-md-4 col-sm-8 col-lg-4 p-4">
-                                    <input class="form-control" type="number" name="contacto_lider">
+                                    <input class="form-control" type="number" name="contacto_lider" autocomplete="off">
                                       <label for="date">Contacto</label>
 
                                    </div>

@@ -48,7 +48,7 @@ Listagem de Alunos
     <td>{{$aluno->nome_candidato}}</td>
     <td>{{$aluno->genero}}</td>
     <td>{{$aluno->data_nascimento}}</td>
-    <td></td>
+    <td>{{$aluno->turma}}</td>
 
     <td>{{$aluno->bairro}}</td>
     <td>

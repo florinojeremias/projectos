@@ -25,4 +25,8 @@ class Turmas extends Model
 
     ];
 
+    public function turmas(){
+        return $this->hasMany(Aluno::class);
+    }
+
 }

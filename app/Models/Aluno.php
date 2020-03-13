@@ -14,6 +14,8 @@ class Aluno extends Model
         'casa','contacto','genero','turma_id','ano_conversao','igreja_proviniencia','escola_dominical','ano_entrada',
         'ultima_turma','professor','tipo_baptismo','data_baptismo','numero_baptismo','congregacao_mea','lider_pg','contacto_lider'
     ];
+
+
     //regras de validacao dos dados
     public   $regras=[
         'nome_candidato'=>       'required|min:4|max:150',
