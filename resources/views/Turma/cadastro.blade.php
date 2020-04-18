@@ -3,12 +3,15 @@
 Cadastro da Turma
 @stop
 @section('scripts')
-<script src="{{ asset('js/getturmasalunos.js')}}">
-</script>
+    <script src="{{ asset('js/getturmasalunos.js')}}">
+    </script>
 @stop
+@section('estilos')
+    <link href="{{ asset('css/input.css') }}" rel="stylesheet">
+@endsection
 @section('conteudo')
-<div class="container">
-<form action="{{route('turmacadastro.store')}}" method="post"  id="formturma">
+    <div class="container">
+    <form action="{{route('turmacadastro.store')}}" method="post"  id="formturma">
 @csrf
 @if(session('erro'))
         <div class="alert alert-primary">
@@ -49,7 +52,7 @@ Cadastro da Turma
 
     <div class="col-md-12">
         <div class="pl-0">
-            <button type="submit" class="btn btn-primary">Gravar</button>
+            <button type="submit" class="btn btn-outline-primary">Gravar</button>
         </div>
     </div>
 

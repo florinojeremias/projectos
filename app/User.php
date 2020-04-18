@@ -2,13 +2,17 @@
 
 namespace App;
 
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Regra;
 
+
+
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -17,8 +21,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','regra_id'
     ];
+
+
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,7 +44,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function regra(){
-        return $this->belongsTo('App\Models\Regra');
+
+    public function setPassword($password){
+        if(!empty($password)){
+            $this->attributes['password']=bcrypt($password);
+        }
     }
+    //depois alterar conforme  as permicoes que forem atribuidas
+
+
+public function roles(){
+    return  $this->belongsTo(Regra::class);
+}
+
+
+
+
 }

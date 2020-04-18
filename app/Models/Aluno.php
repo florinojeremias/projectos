@@ -30,5 +30,21 @@ class Aluno extends Model
     public function  turma(){
         return $this->belongsTo(Turmas::class,'id');
     }
+    public function search($genero,$data_nascimento,$bairro){
+        $resultado=$this->where( function($query) use ($genero,$data_nascimento,$bairro){
+
+            if($genero){
+                $query->where('genero','=',$genero);
+            }
+            elseif( $data_nascimento){
+                $query->where('data_nascimento','=',$data_nascimento);
+            }
+            else
+            $query->where('bairro','=',$bairro);
+
+        })->paginate();
+       return $resultado;
+
+    }
 
 }

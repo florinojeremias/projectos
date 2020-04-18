@@ -7,6 +7,7 @@
   <a class="fas fa-chalkboard-teacher" href="/professor/index">Professor</a>
   <a class="fas fa-money" href="#about">Coleta</a>
   <a class="far fa-address-card" href="/turma/index">Turma</a>
+  <a  class="fas fa-question-circle" href="#">Escola</a>
   <a  class="fas fa-question-circle" href="#">Sobre</a>
 </div>
 

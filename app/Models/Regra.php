@@ -3,8 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Permicao;
 
 class Regra extends Model
 {
+    protected  $fillable=[
+        'nome','descricao'
+    ];
+
 
 }

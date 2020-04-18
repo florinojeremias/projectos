@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfessorRequest;
 use Illuminate\Http\Request;
 use App\Models\Professor;
+use PDF;
 
 class ProfessorController extends Controller
 {
@@ -18,7 +20,9 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        //
+        $professors=Professor::with('getTurma');
+        dd($professors);
+
 
     }
 
@@ -38,7 +42,7 @@ class ProfessorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProfessorRequest $request)
     {
         $messages=[
         'nome_professor.required'=>         'o campo de Nome do Professor e de prienchimento Obrigatorio',
@@ -50,19 +54,13 @@ class ProfessorController extends Controller
 
         ];
         $input=$request->all();
-        $validate=validator($input,$this->professor->rules,$messages);
-        if($validate->fails()){
-            return redirect()->back()
-            ->withErrors($validate)->withInput();
 
-        }
+
         if($imagem=$request->file('fotografia')){
              $nomeFoto=time().'.'.$request->fotografia->getClientOriginalName();
             $imagem->move('professor_imagens',$nomeFoto);
             $input['fotografia']=$nomeFoto;
         }
-
-
 
         $this->professor::create($input);
         return redirect()->route('professorcadastro.create')

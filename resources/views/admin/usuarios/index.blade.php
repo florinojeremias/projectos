@@ -12,8 +12,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Permição</th>
-                    <th scope="col">Estado</th>
+
                     <th scope="col">Data de criacao</th>
                 </tr>
             </thead>
@@ -32,8 +31,8 @@
                     <td>
                         {{$user->email}}
                     </td>
-                    <td>{{$user->regra->nome}}</td>
-                    <td>{{$user->is_active==1?'Activo':'Nao esta Activo'}}</td>
+
+
                     <td>
                         {{$user->created_at}}
                     </td>

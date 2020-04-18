@@ -19,15 +19,26 @@ Listagem de Alunos
             </a>
         </div>
     </div>
-    <div class="row p-4">
-        <div class="col-md-4  col-lg-4 col-sm-8"></div>
-        <div class="col-md-6 col-lg-4 col-sm-8">
+<form action="{{route('alunos.search')}} " method="POST">
+        @csrf
+        <div class="row p-4">
+            <div class="col-form-label-lg pl-2 pb-2 " >
+                <input type="text" placeholder="Género" name="genero" class="form-control">
+            </div>
+            <div class="col-form-label-lg pl-2  pb-2">
+                <input type="date" placeholder="Data de Nascimento" name="data_nascimento" class="form-control">
+            </div>
+            <div class="col-form-label-lg pl-2  pb-2">
+                <input type="text" placeholder="Bairro" name="bairro" class="form-control">
+            </div>
+            <div class="col-form-label-lg pl-2 pb-2">
+                <button type="submit" class="btn btn-outline-primary ">Pesquisar</button>
+            </div>
 
 
-        </div>
+    </div>
+    </form>
 
-
-</div>
 <div class="table-responsive">
     <table class="table table-striped ">
     <thead class="bg-alert">
@@ -52,9 +63,9 @@ Listagem de Alunos
 
     <td>{{$aluno->bairro}}</td>
     <td>
-    <a href="{{route('alunocadastro.edit',$aluno->id)}}"  class=" fas fa-pencil-alt">
+    <a href="{{route('alunoedit.edit',$aluno->id)}}"  class=" fas fa-pencil-alt">
         </a>
-        <a href="" class="far fa-trash-alt">
+        <a href="{{ route('alunodelete.destroy',$aluno->id)}}" class="far fa-trash-alt">
         </a>
         <a href="/aluno/alunorelatorio/{{$aluno->id}}" class="fas fa-print"></a>
 
@@ -68,8 +79,9 @@ Listagem de Alunos
     </tbody>
 
     </table>
-</div>
 
+</div>
+{{!!$alunos->links()}}
 
 
 

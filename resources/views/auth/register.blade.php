@@ -52,7 +52,18 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="role_id" class="col-md-4 pb-2 col-form-label text-md-right">{{__('Função')}}</label>
+                                <div class="col-md-6">
+                                   <select name="regra_id" id="" class="form-control" >
+                                       @foreach($regra as $regras)
+                                        <option value="{{$regras->id}}">{{$regras->nome}}</option>
+                                        @endforeach
+                                   </select>
 
+                                </div>
+
+                        </div>
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 

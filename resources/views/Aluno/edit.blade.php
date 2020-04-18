@@ -2,6 +2,9 @@
 @section('title')
 Editar Dados dos Alunos
 @stop
+@section('estilos')
+<link rel="stylesheet" href="{{ asset('css/input.css')}}">
+@stop
 @section('conteudo')
 <div class="content-wrapper">
  <div class="container-fluid">
@@ -11,7 +14,7 @@ Editar Dados dos Alunos
             <h4 style="color:red">Edição dos dados dos Candidatos ao Baptismo</h4>
         </figcaption>
     </figure>
-    <form action="{{ route('alunocadastro.update',$aluno->id)}}" method="POST" class="form">
+    <form enctype="multipart/form-data" action="{{ route('alunocadastro.update',$aluno->id)}}" method="POST" class="form">
         {!! method_field('PUT')!!}
         @csrf
         <ul class="nav nav-tabs  nav-justified">
@@ -27,12 +30,21 @@ Editar Dados dos Alunos
             <a href="#perfilcristaotab" data-toggle="tab" class="p-3">Perfil Cristão </a>
            </li>
         </ul>
+        @if(isset($errors)&& count($errors)>0)
+
+        <div class="alert alert-danger">
+            @foreach( $errors->all() as $erros)
+            <p>{{$erros}}</p>
+            @endforeach
+        </div>
+
+       @endif
 
 
         <div class="tab-content">
             <div id="dadospessoaistab" class="tab-pane active">
                 <div class="col-md4 col-sm-8 col-lg4 p-4">
-                    <img height="60" width="50"src="/aluno_imagens/{{$aluno->imagem}}" alt="imagem nao encontrada" srcset="" class="img-responsive">
+                    <img height="60" width="50"src="/aluno_imagens/{{$aluno->imagem}}" alt="imagem nao encontrada" srcset="" class="img-responsive img-rounded">
                 </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
@@ -93,7 +105,7 @@ Editar Dados dos Alunos
                             <label for="name">{{__('Contacto')}}</label>
                         </div>
                         <div class="col-md-6 p-4">
-                            <input name="imagem" type="file" class="form-control" value="{{$aluno->imagem}}">
+                            <input name="imagem" type="file" class="form-control"   value="{{$aluno->imagem}}" >
                             <label for="name">{{__('Fotografia')}}</label>
                         </div>
 
@@ -193,13 +205,14 @@ Editar Dados dos Alunos
 
 
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-outline-primary">Actualizar</button>
                          </div>
 
                 </div>
 
          </div>
     </form>
+
  </div><!--fim do container-fluid-->
 </div><!--fim do content-wrapper-->
 @endsection

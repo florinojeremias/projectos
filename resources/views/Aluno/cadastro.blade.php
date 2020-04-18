@@ -7,6 +7,7 @@ Cadastro de Alunos
     </script>
 
    <link rel="stylesheet" href="{{ asset('css/input.css')}}">
+   <link rel="shortcut icon" href="{{asset('image/logomeapng.png')}}" type="image/png">
 @stop
 @section('conteudo')
 
@@ -115,7 +116,7 @@ Cadastro de Alunos
                                          </div>
 
                                          <div class="col-md-12 p-4">
-                                            <a  id="proximo" class=" btn btn-primary continue" style="margin-left:91%;" > Seguinte</a>
+                                            <a  id="proximo" class=" btn btn-outline-primary continue" style="margin-left:91%;" > Seguinte</a>
                                          </div>
 
                         </div>
@@ -138,8 +139,8 @@ Cadastro de Alunos
                              <label for="name">Profissão/Ocupação</label>
                               </div>
                               <div class="pl-3"  >
-                                    <a id="antigo"  class=" btn btn-primary pr-3 back" >Voltar</a>
-                                    <a  id="proximo1" class=" btn btn-primary pr-3 continue" > Seguinte</a>
+                                    <a id="antigo"  class=" btn btn-outline-primary pr-3 back" >Voltar</a>
+                                    <a  id="proximo1" class=" btn btn-outline-primary pr-3 continue" > Seguinte</a>
                                 </div>
 
                      </div>
@@ -231,7 +232,10 @@ Cadastro de Alunos
                                    </div>
 
                                 <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Gravar</button>
+                                    <div class="pl-2">
+                                        <button type="submit" class="btn btn-outline-primary">Gravar</button>
+                                    </div>
+
                                 </div>
 
                     </div>

@@ -37,7 +37,7 @@ class CreateProfessorsTable extends Migration
             $table->integer('numero_cartao_dizimista');
             $table->year('ano_lencionamento')->nullable();
             $table->timestamps();
-           
+
         });
     }
 

@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use PDF;
+use App\User;
+use App\Models\Regra;
 use  App\Models\Aluno;
 use App\Models\Escola;
 use App\Models\Turmas;
-use PDF;
+use Illuminate\Http\Request;
+use App\Policies\Aluno as Student;
+use App\Http\Requests\AlunoRequest;
+use Illuminate\Support\Facades\Auth;
+use Facade\FlareClient\Http\Response;
+use App\Http\Requests\AlunoUpdateRequest;
+use Illuminate\Contracts\Auth\Access\Gate   ;
 
 class AlunosController extends Controller
 {
     private $aluno;
+    private $totalPaginas=10;
+
     public function __construct(Aluno $aluno){
         $this->aluno=$aluno;
+
     }
     /**
      * Display a listing of the resource.
@@ -21,9 +32,8 @@ class AlunosController extends Controller
      */
     public function index(Aluno  $aluno)
     {
-                $alunos=Aluno::all();
-              //  $turmas=Aluno::select('id')->get();
-                //$turmasa=Turmas::find($turmas);
+
+                $alunos=Aluno::paginate($this->totalPaginas);
                 $alunos->each(function($aluno){
                     $turma=Turmas::find($aluno->turma_id);
                     $aluno->turma=$turma->nome_turma;
@@ -36,84 +46,41 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( )
     {
+
         $escolas=Escola::all();
         $turmas=Turmas::all();
+        $role=Regra::select("nome");
 
+       // $this->authorize('create-aluno',$this->aluno);
+
+       /* if($gate->denies('create-alunos',$this->aluno)){
+             abort(403,'Nao estas autorizado');
+        }
+        */
 
         return view('Aluno.cadastro',compact('escolas','turmas'));
     }
-    public function getTurmas(){
 
-    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(AlunoRequest $request)
     {
-
-        //dd($request->all());
-        // validacao dos dados
-        $mesages=[
-            'nome_candidato.required'=>'o Campo do Nome e de prienchimento obrigatorio',
-            'bi.required'=>'o Campo do Nome e de prienchimento obrigatorio',
-            'nome_pai.min:4|max:150'=>'O minimo de caracteres no campo de nome do pai e nome da mae e de 4',
-            'bairro.required'=>'O campo de bairro e de prienchimento obrigatorio',
-            'casa.numeric'=>'o campo de numero da casa deve possuir somente numeros',
-
-
-        ];
-
         $dados=$request->all();
-
-        $validate= validator($dados,$this->aluno->regras,$mesages);
-      $this->validate($request,$this->aluno->regras);
-       if($validate->fails()){
-            return redirect()->back()
-            ->withErrors($validate)
-            ->withInput();
-
-
-        }
-
-
-if($imagem=$request->file('imagem')){
-    $nome=$imagem->getClientOriginalName();
-    $imagem->move('aluno_imagens',$nome);
-    $dados['imagem']=$nome;
-}
-$this->aluno::create($dados);
-    return redirect()->route('alunocadastro.create')
-   ->with('error','Aluno Cadastrado com sucesso!');
-       // if($request->hasFile('imagem')&& $request->file('imagem')->isValid()){
-           //if($this->aluno->imagem)
-            //$nome=$this->aluno->imagem;
-            //else
-           // $nome=$this->aluno->nome_candidato.kebab_case($this->aluno->nome_cadidato);
-            //$extension=$request->imagem->getOriginalNmeExtension();
-            //$nameFile="{$this->aluno->nome_cadidato}.{$extension}";
-           // $imageName = time().'.'.$request->imagem->extension();
-            //$request->imagem->move(public_path('images'), $imagem);
-           // dd($request->all());
-          // $nomeFoto=time().'.'.$request->imagem->getClientOriginalName();
-                //$request->imagem->move(public_path('imagem'),'$nomeFoto.jpg');
-
-           //$upload=$request->imagem->store($nomeFoto);
-             //   $dados['imagem']=$nomeFoto;
-
-
-
-
-       // }
-
-
-
-
-
+        if($imagem=$request->file('imagem')){
+        $nome=$imagem->getClientOriginalName();
+        $imagem->move('aluno_imagens',$nome);
+        $dados['imagem']=$nome;
+    }
+        $this->aluno::create($dados);
+        return redirect()->route('alunocadastro.create')
+         ->with('error','Aluno Cadastrado com sucesso!');
     }
 
     /**
@@ -124,16 +91,10 @@ $this->aluno::create($dados);
      */
     public function show($id)
     {
+
         $aluno=$this->aluno->find($id);
 
-
     }
-
-
-
-
-
-
 
  /**
      * //Retorna um determinado Aluno para o Relatorio
@@ -144,7 +105,7 @@ $this->aluno::create($dados);
     public function relatorio($id){
         $aluno=$this->aluno->find($id);
         $pdf = PDF::loadView('Relatorios.aluno',compact('aluno'));
-        return $pdf->stream('aluno.pdf');
+        return $pdf->stream($aluno->nome_candidato.'.pdf');
     }
 
     /**
@@ -171,11 +132,19 @@ $this->aluno::create($dados);
      */
 
 
-    public function update(Request $request, $id)
+    public function update(AlunoUpdateRequest $request, $id)
 
     {
         $dados=$request->all();
-       $aluno=$this->aluno->find($id);
+
+       $aluno=$this->aluno->findOrFail($id);
+       if($imagem=$request->file('imagem')){
+           $nome=$imagem->getClientOriginalName();
+           $imagem->move('aluno_imagens',$nome);
+           $dados['imagem']=$nome;
+
+
+       }
        $update=$aluno->update($dados);
 
        if($update)
@@ -194,6 +163,20 @@ $this->aluno::create($dados);
      */
     public function destroy($id)
     {
-        //
+        echo($id);
+        //$aluno=$this->aluno->findOrFAil($id);
+        //$aluno->delete();
+        //unlink(public_path('aluno_imagens').$aluno->imagem);
+        //return redirect('Aluno.index');
+
+    }
+    //pesquisa por um determinado registro na tabela dos alunos
+    public function search(Request $request){
+        $alunos=$this->aluno->search($request->genero,$request->data_nascimento,$request->bairro);
+        $alunos->each(function($aluno){
+            $turma=Turmas::find($aluno->turma_id);
+            $aluno->turma=$turma->nome_turma;
+        });
+        return view('Aluno.listaalunos',compact('alunos'));
     }
 }

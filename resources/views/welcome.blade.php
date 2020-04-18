@@ -32,10 +32,7 @@
          @else
            <a class="nav-link" href="{{ route('login')}}" style="color:white;">Login</a>
            </li>
-            @if(Route::has('register'))
-             <li class="nav-item">
-             <a class="nav-link" href="{{ route('register')}}" style="color:white;">Registar</a>
-            @endif
+
       @endauth
     @endif
       </li>

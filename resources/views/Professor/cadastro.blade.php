@@ -7,6 +7,9 @@
 
 </script>
 @stop
+@section('estilos')
+<link href="{{ asset('css/input.css') }}" rel="stylesheet">
+@stop
 
 
 @section('conteudo')
@@ -26,7 +29,7 @@
                 @endforeach
           @endif
             </div>
-
+            <h4 class="text-center" style="color:red;">Cadastro de Professores</h4>
             <div class="form-group col-xs-12">
                 <ul class="nav nav-tabs nav-justified p-3">
                     <li class="active">
@@ -38,6 +41,7 @@
 
 
                 </ul>
+
                 <div class="tab-content">
                     <div id="dadospessoaistab" class="tab-pane active">
                         <div class="row">
@@ -77,7 +81,7 @@
                                 <option value="professor_principal">Professor Principal</option>
                                 <option value="professor_assistente">Professor Assistente</option>
                                 </select>
-                                <label for="ctegoria">Categoria</label>
+                                <label for="categoria">Categoria</label>
                             </div>
 
                             <div class="col-md-6 p-3">
@@ -109,8 +113,8 @@
                             </div>
                             <div class="col-md-12">
                             <div class="pl-1"  >
-                                    <a id="antigo"  class=" btn btn-primary pr-3 back" >Voltar</a>
-                                    <a  id="proximo1" class=" btn btn-primary pr-3 continue" > Seguinte</a>
+
+                                    <a  id="proximo1" class=" btn btn-outline-primary pr-3 continue" > Seguinte</a>
                                 </div>
                             </div>
 
@@ -146,8 +150,8 @@
                             </div>
                             <div class="col-md-12">
                             <div class="pl-3"  >
-                                    <a id="antigo"  class=" btn btn-primary pr-3 back" >Voltar</a>
-                                    <a  id="proximo1" class=" btn btn-primary pr-3 continue" > Seguinte</a>
+                                    <a id="antigo"  class=" btn btn-outline-primary pr-3 back" >Voltar</a>
+                                    <a  id="proximo1" class=" btn btn-outline-primary pr-3 continue" > Seguinte</a>
                                 </div>
                             </div>
                         </div>
@@ -155,21 +159,21 @@
                     <div id="historicotab" class="tab-pane fade">
                         <div class="row">
                             <div class="col-md-6 p-3">
-                                <input type="name" name="nome_relator" class="form-control">
+                                <input type="name" name="nome_relator" class="form-control" {{old('nome_relator')}}>
                                 <label for="">Nome do Relator</label>
                             </div>
                             <div class="col-md-6 p-3">
-                                <input type="number" name="numero_cartao_dizimista" class="form-control">
+                            <input type="number" name="numero_cartao_dizimista" class="form-control {{old('numero_cartao_dizimista')}}">
                                 <label for="">Numero do Cartao de Dizimista</label>
                             </div>
                             <div class="col-md-6 p-3">
-                                <input type="number" name="ano_lencionamento" class="form-control">
+                                <input type="number" name="ano_lencionamento" class="form-control" {{old('ano_lencionamento')}}>
                                 <label for="">Ano de Lencionamento</label>
                             </div>
                             <div class="col-md-12">
                             <div class="pl-3"  >
-                                    <a id="antigo"  class=" btn btn-primary pr-3 back" >Voltar</a>
-                                    <button class="btn btn-primary" type="submit">Gravar</button>
+                                    <a id="antigo"  class=" btn btn-outline-primary pr-3 back" >Voltar</a>
+                                    <button class="btn btn-outline-primary" type="submit">Gravar</button>
 
                                 </div>
                             </div>

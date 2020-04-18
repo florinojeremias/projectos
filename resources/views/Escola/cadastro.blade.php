@@ -2,6 +2,9 @@
 @section('title')
 Cadastro de Escolas
 @stop
+@section('estilos')
+<link href="{{ asset('css/input.css') }}" rel="stylesheet">
+@endsection
 @section('conteudo')
     <form action="{{route('escolacadastro.store')}}" method="post" class="form">
         @csrf
@@ -47,7 +50,7 @@ Cadastro de Escolas
             </div>
             <div class="col-md-12">
                 <div class="pl-1">
-                    <button type="submit" class="btn btn-primary">Gravar</button>
+                    <button type="submit" class="btn btn-outline-primary">Gravar</button>
                 </div>
             </div>
 

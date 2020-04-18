@@ -14,29 +14,58 @@
 Route::get('/', 'Vistas\ViewController@homepage');
 
 
-//passando parametros nas rotas
-//defenindo que somente usuarios logados podem acessar esse link
- Route::get('/teste2/{id}', 'Views_controller\Sitecontroller@controle')->middleware('auth');
+
+
+
+    Route::group(['middleware' => 'teacher'], function () {
+
+        //rotas do aluno
+         Route::any('alunos/pesquisa','AlunosController@search')->name('alunos.search');
+         Route::get('/aluno/alunorelatorio/{id}','AlunosController@relatorio');
+         Route::resource('/aluno/alunolistagem','AlunosController');
+         Route::resource('/aluno/alunoedit', 'AlunosController');
+         Route::resource('/aluno/alunodelete', 'AlunosController');
+         Route::resource('/aluno/alunocadastro','AlunosController');
+         Route::get('/aluno/index','Vistas\Aluno\AlunoController@AlunoIndex');
+
+    });
+    Route::group(['middleware' => 'admin'], function () {
+
+    //rotas para o professor
+    Route::resource('/professor/professorcadastro','ProfessorController');
+    Route::get('/professor/index','Vistas\ViewController@professorIndex');
+
+    //rotas para  a turma
+    Route::resource('/turma/turmacadastro','TurmaController');
+    Route::get('/turma/index','Vistas\ViewController@turmaIndex');
+    //Rotas da escola
+    Route::resource('/escola/escolacadastro','EscolaController');
+    Route::resource('/area/areacadastro','areaController');
+
+        //admin rotes
+    Route::resource('regras/regrascadastro','RegrasController');
+
+    //Route::get('turma/turmacadastro/','area@index');
+    Route::resource('/admin/usuarios', 'AdminUserController');
+    Route::resource('/admin/usuariocadastro', 'AdminUserController');
+
+
+    Route::get('/home','HomeController@index')->name('home');
+
+
+    //rotas das regras para o admin
+    //Route::get('regras/index','viewsController@regrasindex');
+    //Route::resource('/regras/cadastrar','RegrasController');
+    Route::get('/registar','Auth\RegisterController@index')->name('registar');
+
+
+});
+Route::get('/unavailable',function(){
+    return view('errors.419');
+})->name('indisponivel');
+
 
 
 
 Auth::routes();
 
-Route::resource('/escola/escolacadastro','EscolaController')->middleware('auth');
-Route::resource('/area/areacadastro','areaController')->middleware('auth');
-Route::resource('/aluno/alunocadastro','AlunosController')->middleware('auth');
-Route::resource('/professor/professorcadastro','ProfessorController');
-//rota para mostrar a lista na view
-//Route::get('/turma/turmacadastroo','TurmaController@getEscolas');
-Route::get('/aluno/alunorelatorio/{id}','AlunosController@relatorio');
-Route::resource('/turma/turmacadastro','TurmaController');
-Route::resource('/aluno/alunolistagem','AlunosController');
-Route::resource('/aluno/alunoedit', 'AlunosController');
-
-//Route::get('turma/turmacadastro/','area@index');
-Route::resource('/admin/usuarios', 'AdminUserController');
-Route::resource('/admin/usuariocadastro', 'AdminUserController');
-Route::get('/turma/index','Vistas\ViewController@turmaIndex');
-Route::get('/professor/index','Vistas\ViewController@professorIndex');
-Route::get('/home','HomeController@index')->name('home');
-Route::get('/aluno/index','Vistas\Aluno\AlunoController@AlunoIndex')->middleware('auth');

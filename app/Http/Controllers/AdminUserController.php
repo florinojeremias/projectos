@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\AdminUserRequest;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Regra;
 
 class AdminUserController extends Controller
 {
@@ -26,7 +27,8 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin.usuarios.cadastro');
+        $regra=Regra::all();
+        return view('admin.usuarios.cadastro',compact('regra'));
     }
 
     /**
@@ -35,9 +37,13 @@ class AdminUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminUserRequest $request)
     {
-        //
+        $input=$request->all();
+        $input['password']= bcrypt($request->password);
+
+       User::create($input);
+       return redirect('/admin/usuarios')->with('erro','Usuario Criado!');
     }
 
     /**

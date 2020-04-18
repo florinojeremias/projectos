@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Regra;
 
 class RegisterController extends Controller
 {
@@ -37,7 +38,12 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('guest');
+    }
+    public function index(){
+        $regra= Regra::all();
+        return view('auth.register',compact('regra'));
     }
 
     /**
@@ -61,11 +67,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
     protected function create(array $data)
     {
+       // $funcao=Regra::all();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'regra_id'=>$data['regra_id'],
             'password' => Hash::make($data['password']),
         ]);
     }
