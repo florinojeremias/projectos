@@ -81,7 +81,7 @@ Listagem de Alunos
     </table>
 
 </div>
-{{!!$alunos->links()}}
+{{$alunos->links()}}
 
 
 

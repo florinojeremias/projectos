@@ -40,23 +40,25 @@ Route::get('/', 'Vistas\ViewController@homepage');
     Route::get('/turma/index','Vistas\ViewController@turmaIndex');
     //Rotas da escola
     Route::resource('/escola/escolacadastro','EscolaController');
+    Route::get('/escola/index','EscolaController@menu');
     Route::resource('/area/areacadastro','areaController');
 
         //admin rotes
     Route::resource('regras/regrascadastro','RegrasController');
+    Route::get('/area/index','areaController@menu');
 
     //Route::get('turma/turmacadastro/','area@index');
     Route::resource('/admin/usuarios', 'AdminUserController');
     Route::resource('/admin/usuariocadastro', 'AdminUserController');
-
+    Route::get('/usuarios/index','AdminUserController@menu');
 
     Route::get('/home','HomeController@index')->name('home');
-
+    Route::get('/registar','Auth\RegisterController@index')->name('registar');
 
     //rotas das regras para o admin
     //Route::get('regras/index','viewsController@regrasindex');
     //Route::resource('/regras/cadastrar','RegrasController');
-    Route::get('/registar','Auth\RegisterController@index')->name('registar');
+
 
 
 });

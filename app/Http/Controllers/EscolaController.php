@@ -24,6 +24,9 @@ class EscolaController extends Controller
     {
 
     }
+    public function menu(){
+        return view('Escola.index');
+    }
 
     /**
      * Show the form for creating a new resource.
