@@ -50,7 +50,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
     Route::resource('/admin/usuariocadastro', 'AdminUserController');
 
 
-    Route::get('/home','HomeController@index')->name('home');
+
 
 
     //rotas das regras para o admin
@@ -63,7 +63,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
 Route::get('/unavailable',function(){
     return view('errors.419');
 })->name('indisponivel');
-
+Route::get('/home','HomeController@index')->name('home');
 
 
 
