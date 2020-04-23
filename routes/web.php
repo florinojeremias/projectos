@@ -60,11 +60,9 @@ Route::get('/', 'Vistas\ViewController@homepage');
 
 
 });
-Route::get('/unavailable',function(){
-    return view('errors.419');
-})->name('indisponivel');
-Route::get('/home','HomeController@index')->name('home');
 
+Route::get('/home','HomeController@index')->name('home');
+Route::get('/unavailable','HomeController@indisponivel')->name('indisponivel');
 
 
 Auth::routes();
