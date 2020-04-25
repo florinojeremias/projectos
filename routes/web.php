@@ -22,22 +22,23 @@ Route::get('/', 'Vistas\ViewController@homepage');
         //rotas do aluno
          Route::any('alunos/pesquisa','AlunosController@search')->name('alunos.search');
          Route::get('/aluno/alunorelatorio/{id}','AlunosController@relatorio');
+         Route::get('/aluno/index','Vistas\Aluno\AlunoController@AlunoIndex');
          Route::resource('/aluno/alunolistagem','AlunosController');
          Route::resource('/aluno/alunoedit', 'AlunosController');
          Route::resource('/aluno/alunodelete', 'AlunosController');
          Route::resource('/aluno/alunocadastro','AlunosController');
-         Route::get('/aluno/index','Vistas\Aluno\AlunoController@AlunoIndex');
 
     //});
     //Route::group(['middleware' => 'admin'], function () {
 
     //rotas para o professor
-    Route::resource('/professor/professorcadastro','ProfessorController');
     Route::get('/professor/index','Vistas\ViewController@professorIndex');
+    Route::resource('/professor/professorcadastro','ProfessorController');
 
     //rotas para  a turma
-    Route::resource('/turma/turmacadastro','TurmaController');
     Route::get('/turma/index','Vistas\ViewController@turmaIndex');
+    Route::resource('/turma/turmacadastro','TurmaController');
+
     //Rotas da escola
     Route::resource('/escola/escolacadastro','EscolaController');
     Route::resource('/area/areacadastro','areaController');
