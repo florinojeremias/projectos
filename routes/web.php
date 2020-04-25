@@ -45,25 +45,14 @@ Route::get('/', 'Vistas\ViewController@homepage');
     Route::resource('/area/areacadastro','areaController');
 
         //admin rotes
-<<<<<<< HEAD
-
-=======
-    Route::resource('regras/regrascadastro','RegrasController');
-    Route::get('/area/index','areaController@menu');
->>>>>>> 5ec92d55310117d304be3f2c42665346f26af0d2
 
     //Route::get('turma/turmacadastro/','area@index');
     Route::resource('/admin/usuarios', 'AdminUserController');
     Route::resource('/admin/usuariocadastro', 'AdminUserController');
     Route::get('/usuarios/index','AdminUserController@menu');
 
-<<<<<<< HEAD
 
 
-=======
-    Route::get('/home','HomeController@index')->name('home');
-    Route::get('/registar','Auth\RegisterController@index')->name('registar');
->>>>>>> 5ec92d55310117d304be3f2c42665346f26af0d2
 
     //rotas das regras para o admin
     //Route::get('regras/index','viewsController@regrasindex');
