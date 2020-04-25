@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class AlunoController extends Controller
 {
     public function AlunoIndex(){
-        return \view('Aluno\index');
+        return view('Aluno.index');
     }
-  
+
 }
