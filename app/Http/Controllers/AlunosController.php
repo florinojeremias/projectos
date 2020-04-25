@@ -30,10 +30,12 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Aluno  $aluno)
+    public function index()
     {
 
                 $alunos=Aluno::paginate($this->totalPaginas);
+                if($alunos->isEmpt())
+                    return view('Aluno.listaalunos',compact('alunos'));
                 $alunos->each(function($aluno){
                     $turma=Turmas::find($aluno->turma_id);
                     $aluno->turma=$turma->nome_turma;

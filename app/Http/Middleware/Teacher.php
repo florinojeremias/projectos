@@ -19,12 +19,12 @@ class Teacher
     {
         if(Auth::user()){
             $permissao=Regra::findOrFail(Auth::user()->id);
-            if($permissao->nome=="Professor"){
+            if($permissao->nome=="Professor")
                 return $next($request);
-            }
-            else{
+
+
                 return response(view('errors.403'));
-            }
+
 
         }
 
