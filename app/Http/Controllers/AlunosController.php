@@ -34,7 +34,7 @@ class AlunosController extends Controller
     {
 
                 $alunos=Aluno::paginate($this->totalPaginas);
-                if($alunos->isEmpt())
+                if($alunos->isEmpty())
                     return view('Aluno.listaalunos',compact('alunos'));
                 $alunos->each(function($aluno){
                     $turma=Turmas::find($aluno->turma_id);

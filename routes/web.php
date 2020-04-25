@@ -29,7 +29,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
          Route::get('/aluno/index','Vistas\Aluno\AlunoController@AlunoIndex');
 
     //});
-    Route::group(['middleware' => 'admin'], function () {
+    //Route::group(['middleware' => 'admin'], function () {
 
     //rotas para o professor
     Route::resource('/professor/professorcadastro','ProfessorController');
@@ -59,7 +59,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
     Route::get('/registar','Auth\RegisterController@index')->name('registar');
 
 
-});
+//});
 
 Route::get('/home','HomeController@index')->name('home');
 Route::get('/unavailable','HomeController@indisponivel')->name('indisponivel');
