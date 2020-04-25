@@ -43,7 +43,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
     Route::resource('/area/areacadastro','areaController');
 
         //admin rotes
-    Route::resource('regras/regrascadastro','RegrasController');
+
 
     //Route::get('turma/turmacadastro/','area@index');
     Route::resource('/admin/usuarios', 'AdminUserController');
