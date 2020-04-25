@@ -20,6 +20,9 @@ class areaController extends Controller
     {
 
     }
+    public function menu(){
+        return view('Area.index');
+    }
 
     /**
      * Show the form for creating a new resource.

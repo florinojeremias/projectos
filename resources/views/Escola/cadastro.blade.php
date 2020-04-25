@@ -6,6 +6,7 @@ Cadastro de Escolas
 <link href="{{ asset('css/input.css') }}" rel="stylesheet">
 @endsection
 @section('conteudo')
+<h3 style="color:red" class="text-center p-2">Cadastro de Escolas</h3>
     <form action="{{route('escolacadastro.store')}}" method="post" class="form">
         @csrf
         @if(session('erro'))

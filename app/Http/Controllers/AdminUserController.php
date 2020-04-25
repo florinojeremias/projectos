@@ -19,6 +19,9 @@ class AdminUserController extends Controller
         $users=User::all();
         return view('admin.usuarios.index',compact('users'));
     }
+    public function menu(){
+        return view('admin.usuarios.menu');
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -5,10 +5,10 @@
   <a class="active fas fa-home" href="/home" >Pagina inicial</a>
   <a class="fas fa-user-graduate" href="/aluno/index">Aluno</a>
   <a class="fas fa-chalkboard-teacher" href="/professor/index">Professor</a>
-  <a class="fas fa-money" href="#about">Coleta</a>
+  <a class="fas fa-school" href="/area/index">Area</a>
   <a class="far fa-address-card" href="/turma/index">Turma</a>
-  <a  class="fas fa-question-circle" href="#">Escola</a>
-  <a  class="fas fa-question-circle" href="#">Sobre</a>
+  <a  class="fas fa-school" href="/escola/index">Escola</a>
+  <a  class="fas fa-user-circle" href="/usuarios/index">Usuarios</a>
 </div>
 
 <!-- Page content -->
@@ -35,7 +35,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" type="button">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">

@@ -11,6 +11,7 @@ Cadastro da Turma
 @endsection
 @section('conteudo')
     <div class="container">
+        <h3 style="color:red" class="text-center p-2">Cadastro de Turmas</h3>
     <form action="{{route('turmacadastro.store')}}" method="post"  id="formturma">
 @csrf
 @if(session('erro'))

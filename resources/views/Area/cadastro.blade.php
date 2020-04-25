@@ -5,14 +5,12 @@
     @section('scripts')
     <script src="{{ asset('js/postarea.js')}}"></script>
     @stop
+    @section('estilos')
+        <link href="{{ asset('css/input.css') }}" rel="stylesheet">
+    @endsection
 @section('conteudo')
  <div class="container">
-    <div class="row">
-
-        <div class="align-center">
-            <img src="{{asset('image/logomeapng.png')}}" alt="Imagem nao Encontrada" width="5%" class="pagination-centered">
-        </div>
-    </div>
+    <h3 style="color:red" class="text-center p-2">Cadastro de Regiões</h3>
  </div>
 
   <form id="formarea" method="POST" action="{{ route('areacadastro.store')}}" class="form">
