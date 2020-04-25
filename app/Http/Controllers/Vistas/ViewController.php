@@ -12,10 +12,10 @@ class ViewController extends Controller
         return \view('welcome');
     }
     public function professorIndex(){
-        return \view('Professor\index');
+        return \view('Professor.index');
     }
     public function turmaIndex(){
         return \view('Turma.index');
     }
-   
+
 }
