@@ -17,7 +17,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
 
 
 
-    Route::group(['middleware' => 'teacher'], function () {
+  //  Route::group(['middleware' => 'teacher'], function () {
 
         //rotas do aluno
          Route::any('alunos/pesquisa','AlunosController@search')->name('alunos.search');
@@ -28,7 +28,7 @@ Route::get('/', 'Vistas\ViewController@homepage');
          Route::resource('/aluno/alunocadastro','AlunosController');
          Route::get('/aluno/index','Vistas\Aluno\AlunoController@AlunoIndex');
 
-    });
+    //});
     Route::group(['middleware' => 'admin'], function () {
 
     //rotas para o professor

@@ -22,8 +22,7 @@ class Teacher
             if($permissao->nome=="Professor")
                 return $next($request);
 
-
-                return response(view('errors.403'));
+            return response(view('errors.403'));
 
 
         }
