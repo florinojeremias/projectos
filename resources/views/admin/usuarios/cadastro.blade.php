@@ -1,4 +1,4 @@
-@extends('layouts.sidenavbar')
+@extends('layouts.master')
 @section('title')
     Criar Usuarios
 @stop
@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="text-center p-3">
             <h4 style="color:red">Criar usuarios</h4>
-            <hr style="width: 100%">
+
         </div>
         @if(count($errors)>0)
             <div class="alert alert-danger">
@@ -27,7 +27,7 @@
             <p>{{session('erro')}}</p>
         </div>
         @endif
-        <form action="{{route('usuariocadastro.store')}}" method="post">
+        <form action="{{route('user.store')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-md-6 p-4">

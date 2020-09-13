@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    alert("aaaaaa")
  $(".form-group .form-control").blur(function(){
     if($(this).val() !=""){
     $(this).siblings("label").addClass("active");
@@ -10,6 +11,7 @@ $(document).ready(function(){
  });
 
 });
+
 
 $('.continue').click(function(){
    $('.nav-tabs > #tab1').next('li').find('a').trigger('click');

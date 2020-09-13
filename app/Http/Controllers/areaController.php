@@ -18,7 +18,8 @@ class areaController extends Controller
      */
     public function index()
     {
-
+        $areas=Area::all();
+        return view();
     }
     public function menu(){
         return view('Area.index');

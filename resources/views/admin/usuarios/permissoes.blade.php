@@ -1,1 +1,1 @@
-@extends('sidenavbar')
+@extends('layouts.master')

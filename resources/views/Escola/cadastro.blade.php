@@ -1,6 +1,6 @@
-@extends('layouts.sidenavbar')
+@extends('layouts.master')
 @section('title')
-Cadastro de Escolas
+MEA
 @stop
 @section('estilos')
 <link href="{{ asset('css/input.css') }}" rel="stylesheet">

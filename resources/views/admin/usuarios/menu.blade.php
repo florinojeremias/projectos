@@ -1,4 +1,4 @@
-@extends('layouts.sidenavbar')
+@extends('layouts.master')
 @section('title')
 Usuario
 @stop
@@ -10,7 +10,7 @@ Usuario
             <div class="card" style="width=:18rem;">
                 <div class="card-body">
                     <img src=""  alt="">
-                    <caption><a href="{{ route('usuariocadastro.create')}}">Cadastrar</a></caption>
+                    <caption><a href="{{ route('createuser')}}">Cadastrar</a></caption>
                 </div>
 
             </div>

@@ -35,6 +35,7 @@ class AlunosController extends Controller
 
                 $alunos=Aluno::paginate($this->totalPaginas);
                 if($alunos->isEmpty())
+                //mudar a view que deve redirecionar caso os dados do alunos estejam vazios
                     return view('Aluno.listaalunos',compact('alunos'));
                 $alunos->each(function($aluno){
                     $turma=Turmas::find($aluno->turma_id);
@@ -150,7 +151,7 @@ class AlunosController extends Controller
        $update=$aluno->update($dados);
 
        if($update)
-           return redirect()->route('alunocadastro.index')->with('erro','Dados actualizados com Sucesso!');
+           return redirect()->route('alunolistagem.index')->with('erro','Dados actualizados com Sucesso!');
            else
            return redirect()->route('alunocadastro.edit')->with('error','Falha ao actualizar!');
 

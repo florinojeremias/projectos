@@ -1,4 +1,4 @@
-@extends('layouts.sidenavbar')
+@extends('layouts.master')
 @section('title')
     Cadastro da Area
     @stop

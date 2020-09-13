@@ -1,4 +1,4 @@
-@extends('layouts.sidenavbar')
+@extends('layouts.master')
 @section('title')
 Editar Dados dos Alunos
 @stop
@@ -48,34 +48,42 @@ Editar Dados dos Alunos
                 </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                            <input name="nome_candidato" type="text" class="form-control" value="{{$aluno->nome_candidato}}">
                             <label for="name">{{__('Nome do Candidato')}}</label>
+                            <input name="nome_candidato" type="text" class="form-control" value="{{$aluno->nome_candidato}}">
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                            <input name="nome_pai" type="text" class="form-control" value="{{$aluno->nome_pai}}">
                             <label for="name">{{__('Nome do Pai')}}</label>
+                            <input name="nome_pai" type="text" class="form-control" value="{{$aluno->nome_pai}}">
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                            <input name="nome_mae" type="text" class="form-control" value="{{$aluno->nome_mae}}">
                             <label for="name">{{__('Nome da Mãe')}} </label>
+                            <input name="nome_mae" type="text" class="form-control" value="{{$aluno->nome_mae}}">
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                            <input name="naturalidade" type="text" class="form-control" value="{{$aluno->naturalidade}}">
                             <label for="name">{{__('Naturalidade')}} </label>
+                            <input name="naturalidade" type="text" class="form-control" value="{{$aluno->naturalidade}}">
+
                         </div>
                         <div class="col-md-6 p-4">
-                            <input name="bi" type="text" class="form-control" value="{{$aluno->bi}}">
                             <label for="name">{{__('Número de BI')}} </label>
+                            <input name="bi" type="text" class="form-control" value="{{$aluno->bi}}">
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                            <input name="data_nascimento" type="date" class="form-control" value="{{$aluno->data_nascimento}}">
                             <label for="name">{{__('Data de Nascimento')}}</label>
+                            <input name="data_nascimento" type="date" class="form-control" value="{{$aluno->data_nascimento}}">
+
                         </div>
                         <div class="col-md-6 p-4">
-                            <input name="bairro" type="text" class="form-control" value="{{$aluno->bairro}}">
                             <label for="name">{{__('Bairro')}}</label>
+                            <input name="bairro" type="text" class="form-control" value="{{$aluno->bairro}}">
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
+                            <label for="name">{{__('Género')}}</label>
                             <select name="genero" id="" class="form-control">
                                 <option value="{{$aluno->genero}}" selected="{{$aluno->genero}}"> {{$aluno->genero}}</option>
                                 <option value="M" selected="">M</option>
@@ -83,9 +91,10 @@ Editar Dados dos Alunos
 
                             </select>
 
-                        <label for="name">{{__('Género')}}</label>
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
+                            <label for="name">{{__('Estado Civil')}}</label>
                             <select name="estado_civil" id="" class="form-control">
                                 <option value="{{$aluno->estado_civil}}" selected="{{$aluno->estado_civil}}">{{$aluno->estado_civil}}</option>
                                 <option value="Casado">{{__('Casado')}}</option>
@@ -98,15 +107,17 @@ Editar Dados dos Alunos
 
                             </select>
 
-                            <label for="name">{{__('Estado Civil')}}</label>
+
                         </div>
                         <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                            <input name="contacto" type="number" class="form-control" value="{{$aluno->contacto}}">
                             <label for="name">{{__('Contacto')}}</label>
+                            <input name="contacto" type="number" class="form-control" value="{{$aluno->contacto}}">
+
                         </div>
                         <div class="col-md-6 p-4">
-                            <input name="imagem" type="file" class="form-control"   value="{{$aluno->imagem}}" >
                             <label for="name">{{__('Fotografia')}}</label>
+                            <input name="imagem" type="file" class="form-control"   value="{{$aluno->imagem}}" >
+
                         </div>
 
                     </div>
@@ -115,10 +126,12 @@ Editar Dados dos Alunos
             <div id="ocupacaotab" class="tab-pane fade">
                 <div class="row">
                     <div class="col-md-6 col-sm-8 col-lg-6 p-4">
-                        <input name="nivel_academico" type="text" class="form-control" value="{{$aluno->nivel_academico}}">
                         <label for="name">Nivel Academico</label>
+                        <input name="nivel_academico" type="text" class="form-control" value="{{$aluno->nivel_academico}}">
+
                     </div>
                     <div class="col-md-6 col-sm-8 col-lg-6 p-4">
+                        <label for="name">Profissao</label>
                         <select name="profissao" id="" class="form-control">
                             <option value="{{$aluno->profissao}}" selected={{$aluno->profissao}}>{{$aluno->profissao}}</option>
                             <option value="Empregado">Empregado</option>
@@ -128,7 +141,7 @@ Editar Dados dos Alunos
 
                         </select>
 
-                        <label for="name">Profissao</label>
+
                     </div>
 
                 </div>
@@ -137,69 +150,81 @@ Editar Dados dos Alunos
                 <div class="row">
 
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
-                           <input type="date" name="ano_conversao" class="form-control" value="{{$aluno->ano_conversao}}">
                            <label for="ano">{{__('Ano de Conversao')}}</label>
+                           <input type="date" name="ano_conversao" class="form-control" value="{{$aluno->ano_conversao}}">
+
                        </div>
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                            <label for="ano">{{__('Igreja de Proveniencia')}}</label>
                            <input type="text" name="igreja_proviniencia" class="form-control" value="{{$aluno->igreja_proviniencia}}">
-                           <label for="ano">{{__('Igreja de Proveniencia')}}</label>
+
                        </div>
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                        <label for="name">{{__('Escola Dominical?')}}</label>
                            <select name="escola_dominical" id="" class="form-control">
                                <option value="{{$aluno->escola_dominical}}">{{$aluno->escola_dominical}}</option>
                                <option value="Sim">Sim</option>
                                <option value="Nao">Nao</option>
 
                            </select>
-                           <label for="name">{{__('Escola Dominical?')}}</label>
+
                        </div>
                        <div class="col-md-4  col-sm-8 col-lg-4 p-4">
+                        <label for="ano">{{__('Ano de Entrada')}}</label>
+
                            <input type="date" name="ano_entrada" class="form-control" value="{{$aluno->ano_entrada}}">
-                           <label for="ano">{{__('Ano de Entrada')}}</label>
 
                        </div>
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                            <label for="ano">Ultima Turma</label>
                            <input type="text" name="ultima_turma" class="form-control" value="{{$aluno->ultima_turma}}">
-                           <label for="ano">Ultima Turma</label>
+
 
                        </div>
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                            <label for="ano">Professor</label>
                            <input type="text" name="professor" class="form-control" value="{{$aluno->professor}}">
-                           <label for="ano">Professor</label>
+
 
                        </div>
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                        <label for="Tipo_baptismo">Tipo de Baptismo</label>
                           <select name="tipo_baptismo" id="" class="form-control">
                               <option value="{{$aluno->tipo_baptismo}}">{{$aluno->tipo_baptismo}}</option>
                               <option value="Imersao">{{__('Imersão')}}</option>
                               <option value="Aspersao">{{__('Aspersão')}}</option>
                           </select>
-                          <label for="Tipo_baptismo">Tipo de Baptismo</label>
+
 
                        </div>
                        <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                        <label for="date">Data do Baptismo</label>
                          <input class="form-control" type="date" name="data_baptismo" value="{{$aluno->data_baptismo}}">
-                           <label for="date">Data do Baptismo</label>
+
 
                         </div>
                         <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                            <label for="date">Quantas vezes Baptizou</label>
                            <input class="form-control" type="number" name="numero_baptismo" value="{{$aluno->numero_baptismo}}">
-                             <label for="date">Quantas vezes Baptizou</label>
+
 
                           </div>
                           <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                            <label for="text">{{__('Congregacao MEA que Pertence')}}</label>
+
                            <input class="form-control" type="text" name="congregacao_mea" value="{{$aluno->congregacao_mea}}">
-                             <label for="text">{{__('Congregacao MEA que Pertence')}}</label>
 
                           </div>
                           <div class="col-md-4 col-sm-8 col-lg-4 p-4 ">
+                            <label for="date">{{__('Lider da Pg')}}</label>
                            <input class="form-control" type="text" name="lider_pg" value="{{$aluno->lider_pg}}">
-                             <label for="date">{{__('Lider da Pg')}}</label>
+
 
                           </div>
                           <div class="col-md-4 col-sm-8 col-lg-4 p-4">
+                            <label for="date">{{__('Contacto')}}</label>
                             <input class="form-control" type="number" name="contacto_lider" value="{{$aluno->contacto_lider}}">
-                             <label for="date">{{__('Contacto')}}</label>
+
 
                             </div>
 

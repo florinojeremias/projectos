@@ -1,4 +1,4 @@
-@extends('layouts.sidenavbar')
+@extends('layouts.master')
 @section('title')
     Cadastro de Pofessores
 @stop
@@ -7,8 +7,7 @@
 
 </script>
 @stop
-@section('estilos')
-<link href="{{ asset('css/input.css') }}" rel="stylesheet">
+@section('links')
 @stop
 
 
