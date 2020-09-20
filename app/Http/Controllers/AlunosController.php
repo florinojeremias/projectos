@@ -182,4 +182,5 @@ class AlunosController extends Controller
         });
         return view('Aluno.listaalunos',compact('alunos'));
     }
+
 }

@@ -35,5 +35,10 @@ class Controller extends BaseController
         //$regras->save();
         //return view('/');
     }
+    public function get(Request $request){
+        $nome=$request->nome;
+        return view('Aluno.teste',compact('nome'));
+
+    }
 
 }

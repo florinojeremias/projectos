@@ -91,7 +91,12 @@ MEA
  <script>
      $(document).ready(function(){
        $('form[name="formsearch"]').submit(function(event){
+           //$.ajax(
+             //  data:
+           //)
+           $.ajax()
         event.preventDefault();
+
 
 
 

@@ -41,7 +41,6 @@ Route::get('/', 'Vistas\ViewController@homepage');
 
 
 
-
             //Rotas do Professor
          Route::get('/professor/index','Vistas\ViewController@professorIndex');
          Route::get('/professor/cadastro','ProfessorController@create')->name('professorcadasro.create');
